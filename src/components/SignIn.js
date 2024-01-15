@@ -30,10 +30,12 @@ function SignIn() {
 
                     console.log(data.token, data.role, data.id);
 
-                    if (data.role === 'guest' || data.role === 'admin') {
-                        navigate('/');
+                    if (data.role === 'guest') {
+                        navigate('/home');
+                    } else if (data.role === 'admin') {
+                        navigate('/home')
                     } else {
-                        console.error('Invalid role');
+                        navigate("/signin")
                     }
                 } else {
                     console.error('Authentication failed');
