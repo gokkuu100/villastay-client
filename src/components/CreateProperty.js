@@ -8,7 +8,7 @@ function CreateProperty() {
     price: '',
     amenities: '',
     status: '',
-    images: null, // Handle multiple images if needed
+    images: [null, null, null], // Handle multiple images if needed
     admin_id: 1,
   });
 
@@ -21,23 +21,26 @@ function CreateProperty() {
     }));
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e, index) => {
     const files = e.target.files;
+    const updatedImages = [...formData.images]
+    updatedImages[index] = files[0]
     setFormData((prevData) => ({
       ...prevData,
-      images: files,
+      images: updatedImages,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     const form = new FormData();
     for (const key in formData) {
       if (key === 'images') {
-        for (let i = 0; i < formData.images.length; i++) {
-          form.append('images', formData.images[i]);
-        }
+        formData.images.forEach((image) => {
+          form.append(`images`, image); 
+        });
       } else {
         form.append(key, formData[key]);
       }
@@ -46,10 +49,7 @@ function CreateProperty() {
     try {
       const response = await fetch('http://localhost:5000/api/villas/create', {
         method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: form,
       });
 
       if (response.ok) {
@@ -84,8 +84,12 @@ function CreateProperty() {
         <input type="text" name="amenities" value={formData.amenities} onChange={handleChange} required /><br />
         <label>Status</label>
         <input type='text' name='status' value={formData.status} onChange={handleChange} required></input><br />
-        <label>Select Images: </label>
-        <input type="file" name="images" accept="image/*" onChange={handleImageChange} multiple required /><br />
+        <label>Select Image 1 </label>
+        <input type="file" name="images[0]" accept="image/*" onChange={(e) => handleImageChange(e, 0)}  required /><br />
+        <label>Select Image 2 </label>
+        <input type="file" name="images[1]" accept="image/*" onChange={(e) => handleImageChange(e, 1)} required /><br />
+        <label>Select Image 3 </label>
+        <input type="file" name="images[2]" accept="image/*" onChange={(e) => handleImageChange(e, 2)} required /><br />
         <label>Owner ID:</label>
         <input type="text" name="admin_id" value={formData.admin_id} onChange={handleChange} required /><br />
 
