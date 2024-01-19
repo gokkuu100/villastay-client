@@ -1,0 +1,13 @@
+/* Add these styles to your CSS file or component */
+.custom-next-arrow, .custom-prev-arrow {
+    width: 20px;
+    height: 20px;
+    background-color: #000000; /* Change 'yourColor' to the desired color */
+  }
+  
+  .custom-next-arrow::before, .custom-prev-arrow::before {
+    content: '\2192'; /* Right arrow symbol for next, Left arrow symbol for prev */
+    font-size: 18px;
+    color: #000000; /* Change to the desired text color */
+  }
+  
