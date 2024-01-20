@@ -38,6 +38,16 @@ function SingleProperty() {
                     ))}
             </div>
         <p>Description: {property.description}</p>
+        <p>{property.location}</p>
+        <p>{property.price}</p>
+        <p>{property.status}</p>
+        <div>
+            <p>Amenities:</p>
+            {property.amenities &&
+                property.amenities.map((amenity, index) => (
+                    <p key={index}>{amenity}</p>
+                ))}
+        </div>
         </>
     );
 }
