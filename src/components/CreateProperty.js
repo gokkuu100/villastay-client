@@ -8,7 +8,7 @@ function CreateProperty() {
     price: '',
     amenities: '',
     status: '',
-    images: [null, null, null], // Handle multiple images if needed
+    images: [null, null, null], 
     admin_id: 1,
   });
 
@@ -57,7 +57,7 @@ function CreateProperty() {
         console.log(formData);
         console.log('Property created successfully:', data);
         
-        // Optionally, you can redirect or update state after successful submission
+        
       } else {
         console.log(formData);
         console.log([...form.entries()]);

@@ -10,4 +10,11 @@
     font-size: 18px;
     color: #000000; /* Change to the desired text color */
   }
-  
+  /* Add these styles to your stylesheet */
+.fill-star {
+  fill: #f7c200; /* Yellow color for filled stars */
+}
+
+.empty-star {
+  fill: transparent; /* Transparent color for empty stars */
+}

@@ -5,6 +5,9 @@ import Home from './components/Home';
 import CreateProperty from './components/CreateProperty';
 import GetProperties from './components/GetProperties';
 import SingleProperty from './components/SingleProperty';
+import Booking from './components/Booking';
+import Reviews from './components/Reviews';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -16,6 +19,9 @@ function App() {
         <Route path='/create' element={<CreateProperty />} />
         <Route path='/villas' element={<GetProperties />} />
         <Route path='/villas/:id' element={<SingleProperty />} />
+        <Route path='/booking/:id' element={<Booking />} />
+        <Route path='/reviews' element={<Reviews />} />
+        <Route path='/footer' element={<Footer />} />
       </Routes>
     </div>
   );
