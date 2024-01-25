@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        
         <Route path='/' element={<SignIn />} />
         <Route path='/home' element={<Home />} />
         <Route path='/create' element={<CreateProperty />} />

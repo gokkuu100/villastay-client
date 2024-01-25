@@ -5,7 +5,7 @@ function Reviews() {
   const [formData, setFormData] = useState({
     comment: "",
     rating: 0,
-    guest_id: 1,
+    guest_id: 2,
     property_id: 1
   });
 
@@ -28,7 +28,6 @@ function Reviews() {
 
   const handleClick = (rating) => {
     setFormData({ ...formData, rating });
-    setHoverRating(rating); // Set hoverRating to the clicked rating
   };
 
   const handleChange = (e) => {
@@ -48,6 +47,7 @@ function Reviews() {
       if (response.ok) {
         const data = await response.json();
         console.log(data, formData);
+        window.location.reload();
       } else {
         throw new Error("Could not create a new review.");
       }
@@ -59,16 +59,16 @@ function Reviews() {
   return (
     <div>
       <form onSubmit={submitReview}>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col ">
           <label htmlFor="comment">Make a review</label>
           <input
-            className='w-[20rem] h-[8rem] border border-black mb-2'
+            className='w-[30rem] h-[4rem] border border-black mb-2'
             name="comment"
             type='text'
             value={formData.comment}
             onChange={handleChange}
           />
-          <div className="flex items-center mb-2">
+          <div className="flex mb-2">
             <label htmlFor="rating" className="mr-2">Rate the Villa:</label>
             {[1, 2, 3, 4, 5].map((value) => (
               <label
@@ -82,15 +82,15 @@ function Reviews() {
                   type="radio"
                   name="rating"
                   value={value}
-                  checked={hoverRating >= value}
+                  checked={formData.rating === value || hoverRating >= value}
                   onChange={handleChange}
                   className="hidden"
                 />
-                {hoverRating >= value ? "★" : "☆"}
+                {formData.rating >= value || hoverRating >= value ? "★" : "☆"}
               </label>
             ))}
           </div>
-          <button type='submit' className="bg-blue-500 text-white py-2 px-4 mt-2 rounded">Submit Review</button>
+          <button type='submit' className="bg-blue-500 text-white py-2 px-4 mt-2 w-[10rem] rounded">Submit Review</button>
         </div>
       </form>
       <div>
