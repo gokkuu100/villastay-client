@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Reviews from './Reviews';
+import Home from './Home';
+import Footer from './Footer';
 
 
 function SingleProperty() {
@@ -29,7 +31,8 @@ function SingleProperty() {
   }, [id]);
 
   const handleBookClick = () => {
-    navigate(`/booking/${id}`);
+    const currentDate = new Date().toISOString().split('T')[0];
+    navigate(`/booking/${id}`, { state: { property, currentDate }});
   };
 
   const renderRatingStars = (rating) => {
@@ -42,7 +45,8 @@ function SingleProperty() {
 
   return (
     <>
-      <div className="p-4 ">
+    <Home />
+      <div className="p-4 mb-[16rem]">
         <h1 className="text-2xl font-bold mb-4">{property.title}</h1>
         <div className="card flex flex-col items-center">
           <div className="flex flex-wrap -mx-2 mb-4">
@@ -90,6 +94,7 @@ function SingleProperty() {
           <Reviews />
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -4,6 +4,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './styles.css';
 import { Link } from 'react-router-dom';
+import Home from './Home';
+import Footer from './Footer';
 
 function GetProperties() {
   const [listings, setListings] = useState([]);
@@ -64,19 +66,19 @@ function GetProperties() {
 
   return (
     <div>
+      <Home />
       <h1 className="text-2xl font-bold mb-4">Properties</h1>
-      <div>
-        {/* Search bar UI */}
-        <input type="text" name="location" placeholder="Location" onChange={handleChange} />
-        <input type="number" name="price" placeholder="Price" onChange={handleChange} />
-        <input type="number" name="rating" placeholder="Rating" onChange={handleChange} />
-        <button onClick={handleSearch}>Search</button>
+      <div className='border border-box rounded-2xl ml-[14rem] w-[80rem] flex justify-around'>
+        <input type="text" name="location" placeholder="Location" className='rounded-2xl text-center hover:bg-slate-300 active:bg-slate-300 focus:outline-none focus:ring focus:ring-violet-300' onChange={handleChange} />
+        <input type="number" name="price" placeholder="Price" className='rounded-2xl text-center hover:bg-slate-300 active:bg-slate-300 focus:outline-none focus:ring focus:ring-violet-300' onChange={handleChange} />
+        <input type="number" name="rating" placeholder="Rating" className='rounded-2xl text-center hover:bg-slate-300 active:bg-slate-300 focus:outline-none focus:ring focus:ring-violet-300' onChange={handleChange} />
+        <button className="border border-box border-solid bg-[#0e542e] rounded-2xl p-[15px] pr-[10px] text-white" onClick={handleSearch}>Search</button>
       </div>
-      <div className="flex flex-wrap -mx-4 ml-4">
+      <div className="flex flex-wrap -mx-4 ml-4 mt-[2rem] mb-[20rem]">
         {Array.isArray(listings) && listings.length > 0 ? (
           listings.map((property) => (
             <div key={property.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-4">
-              <div className="shadow-md rounded-md flex flex-col">
+              <div className="shadow-md rounded-lg flex flex-col">
                 <Link to={`/villas/${property.id}`}>
                   <Slider {...settings}>
                     {property.images.map((image) => (
@@ -103,6 +105,7 @@ function GetProperties() {
           <p>No properties found</p>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

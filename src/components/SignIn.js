@@ -33,6 +33,7 @@ function SignIn() {
                     if (data.role === 'guest') {
                         navigate('/home');
                     } else if (data.role === 'admin') {
+                        localStorage.setItem('admin_id', data.admin_id)
                         navigate('/home')
                     } else {
                         navigate("/signin")

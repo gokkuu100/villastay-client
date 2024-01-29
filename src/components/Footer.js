@@ -10,7 +10,7 @@ function Footer() {
             method="POST"
             className="max-w-md mx-auto"
         >
-          <div className="mb-4 w-[20vw]">
+          <div className="mb-4 ">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
             <input
               type="email"
@@ -37,7 +37,7 @@ function Footer() {
           </div>
         </form>  
         </div>
-        <footer className='flex mt-[2rem] justify-around'>
+        <footer className='flex mt-[2rem] justify-around bg-[#0e542e] h-[5rem] text-white p-[2rem]'>
             <p>Website Author: Prince Hope</p>
             <a href='mailto:wkurts247@gmail.com'>Email: wkurts247@gmail.com</a>
             <p>© {new Date().getFullYear()} VillaStay<br/></p>

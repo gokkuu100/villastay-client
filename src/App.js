@@ -8,14 +8,16 @@ import SingleProperty from './components/SingleProperty';
 import Booking from './components/Booking';
 import Reviews from './components/Reviews';
 import Footer from './components/Footer';
+import SignUp from './components/SignUp';
 
 
 function App() {
   return (
     <div className="App">
+      
       <Routes>
-        
         <Route path='/' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/home' element={<Home />} />
         <Route path='/create' element={<CreateProperty />} />
         <Route path='/villas' element={<GetProperties />} />
